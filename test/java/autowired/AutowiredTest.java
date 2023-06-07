@@ -15,7 +15,7 @@ public class AutowiredTest {
 
     @Test
     void AutowiredOption() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(Member.class, TestBean.class);
     }
 
     static class TestBean {
@@ -33,6 +33,14 @@ public class AutowiredTest {
         @Autowired
         public void setNoBean3(Optional<Member> noBean3) {
             System.out.println("noBean3 = " + noBean3);
+        }
+    }
+
+    static class Member {
+
+        @Autowired
+        public Member() {
+            System.out.println("Member 생성자 호출");
         }
     }
 }
